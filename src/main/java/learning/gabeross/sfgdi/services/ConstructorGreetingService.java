@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 // There really is no difference between service, component, and controller annotations -> just tells spring
 // that this is a spring-managed component. The specific annotation is more documentation
 @Service
-public class GreetingServiceImpl implements GreetingService {
+public class ConstructorGreetingService implements GreetingService {
     @Override
     public String sayGreeting() {
-        return "Hello World!!!!!!";
+        return "Hello World!!!!!! - Constructor";
     }
 }

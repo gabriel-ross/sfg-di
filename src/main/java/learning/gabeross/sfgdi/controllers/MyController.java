@@ -1,13 +1,19 @@
 package learning.gabeross.sfgdi.controllers;
 
+import learning.gabeross.sfgdi.services.GreetingService;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class MyController {
 
-    public String sayHello() {
-        System.out.println("Hello world");
+    private final GreetingService greetingService;
 
-        return "Hello, folx";
+    // Recall we don't need the autowire for constructor injections
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    public String sayHello() {
+        return greetingService.sayGreeting();
     }
 }

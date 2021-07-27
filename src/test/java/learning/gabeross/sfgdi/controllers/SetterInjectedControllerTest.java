@@ -1,10 +1,8 @@
 package learning.gabeross.sfgdi.controllers;
 
-import learning.gabeross.sfgdi.services.GreetingServiceImpl;
+import learning.gabeross.sfgdi.services.ConstructorGreetingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SetterInjectedControllerTest {
 
@@ -14,7 +12,7 @@ class SetterInjectedControllerTest {
     void setUp() {
         controller = new SetterInjectedController();
         // We are *injecting* a GreetingServiceImpl here into the SetterInjectedController obj
-        controller.setGreetingService(new GreetingServiceImpl());
+        controller.setGreetingService(new ConstructorGreetingService());
     }
 
     @Test

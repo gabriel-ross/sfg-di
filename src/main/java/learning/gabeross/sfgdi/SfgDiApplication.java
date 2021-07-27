@@ -1,10 +1,6 @@
 package learning.gabeross.sfgdi;
 
-import learning.gabeross.sfgdi.controllers.ConstructorInjectedController;
-import learning.gabeross.sfgdi.controllers.MyController;
-import learning.gabeross.sfgdi.controllers.PropertyInjectedController;
-import learning.gabeross.sfgdi.controllers.SetterInjectedController;
-import learning.gabeross.sfgdi.services.GreetingServiceImpl;
+import learning.gabeross.sfgdi.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -15,6 +11,9 @@ public class SfgDiApplication {
 	public static void main(String[] args) {
 		// .run returns an application context that we can assign to a variable
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
+
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
 
 		// We need to cast to MyController type since the func just returns back object type
 		// the myController in getBean must start with a lowercase
@@ -54,13 +53,14 @@ public class SfgDiApplication {
 			// use final properties for injected components
 			// if possible, code to an interface
 
-		String greeting = myController.sayHello();
+		//String greeting = myController.sayHello();
 
-		System.out.println(greeting);
+		System.out.println("----Primary bean ex");
+		System.out.println(myController.sayHello());
 
 		System.out.println("-------------- Property");
 		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
-		propertyInjectedController.greetingService = new GreetingServiceImpl();
+		//propertyInjectedController.greetingService = new ConstructorGreetingService();
 		System.out.println(propertyInjectedController.getGreeting());
 
 		System.out.println("---------- Setter-based");

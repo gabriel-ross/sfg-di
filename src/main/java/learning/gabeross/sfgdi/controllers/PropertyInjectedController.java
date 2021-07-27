@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 public class PropertyInjectedController {
 
     // This tells spring that we want it to inject an instance of the greeting service for us
-    //@Autowired
+    @Autowired
     public GreetingService greetingService;
 
     public String getGreeting() {
